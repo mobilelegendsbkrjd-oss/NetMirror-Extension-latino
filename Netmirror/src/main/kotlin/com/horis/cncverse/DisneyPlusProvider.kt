@@ -63,11 +63,11 @@ class DisneyPlusProvider : MainAPI() {
 
     private fun Element.toSearchResult(): SearchResponse? {
         val id = selectFirst("a")?.attr("data-post") ?: attr("data-post") ?: return null
-        val posterUrl =
-            fixUrlNull(selectFirst(".card-img-container img, .top10-img img")?.attr("data-src"))
+        //val posterUrl =
+            //fixUrlNull(selectFirst(".card-img-container img, .top10-img img")?.attr("data-src"))
 
         return newAnimeSearchResponse("", Id(id).toJson()) {
-            this.posterUrl = posterUrl
+            this.posterUrl = "https://imgcdn.kim/hs/v/$id.jpg"
             posterHeaders = mapOf("Referer" to "$mainUrl/tv/home")
         }
     }
