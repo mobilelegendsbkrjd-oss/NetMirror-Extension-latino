@@ -23,7 +23,7 @@ class DisneyPlusProvider : MainAPI() {
         TvType.Movie,
         TvType.TvSeries,
     )
-    override var lang = "hi"
+    override var lang = "es-LA"
 
     override var mainUrl = "https://net20.cc"
     private var newUrl = "https://net51.cc"
@@ -64,7 +64,7 @@ class DisneyPlusProvider : MainAPI() {
     private fun Element.toSearchResult(): SearchResponse? {
         val id = selectFirst("a")?.attr("data-post") ?: attr("data-post") ?: return null
         //val posterUrl =
-            //fixUrlNull(selectFirst(".card-img-container img, .top10-img img")?.attr("data-src"))
+        //fixUrlNull(selectFirst(".card-img-container img, .top10-img img")?.attr("data-src"))
 
         return newAnimeSearchResponse("", Id(id).toJson()) {
             this.posterUrl = "https://imgcdn.kim/hs/v/$id.jpg"

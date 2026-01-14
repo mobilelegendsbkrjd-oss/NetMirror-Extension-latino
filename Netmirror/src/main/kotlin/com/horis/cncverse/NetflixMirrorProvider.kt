@@ -23,7 +23,7 @@ class NetflixMirrorProvider : MainAPI() {
         TvType.Movie,
         TvType.TvSeries,
     )
-    override var lang = "hi"
+    override var lang = "es-LA"
 
     override var mainUrl = "https://net20.cc"
     private var newUrl = "https://net51.cc"
@@ -81,9 +81,9 @@ class NetflixMirrorProvider : MainAPI() {
                 val imgSrc = selectFirst("img")?.attr("data-src") ?: selectFirst("img")?.attr("src") ?: ""
                 imgSrc.substringAfterLast("/").substringBefore(".")
             }
-        
+
         if (id.isEmpty()) return null
-        
+
         val posterUrl = "https://imgcdn.kim/poster/v/${id}.jpg"
         val title = selectFirst("img")?.attr("alt") ?: ""
 
@@ -143,7 +143,7 @@ class NetflixMirrorProvider : MainAPI() {
             ?.map { it.trim() }
             ?.filter { it.isNotEmpty() }
             ?: emptyList())
-        
+
         // FIXED: Use new score API instead of deprecated toRatingInt()
         val runTime = convertRuntimeToMinutes(data.runtime.toString())
 
